@@ -1,0 +1,33 @@
+build:
+  lib_dirs:
+    - vendor
+    - .bundle
+{{#can_run}}
+web1:
+  ports:
+    - 80:8080
+    - 443:8080
+{{#rackup}}
+  exec: bundle exec rackup --port 8080 -P config.ru
+{{/rackup}}
+{{#unicorn}}
+  exec: bundle exec unicorn -c {{etc_dir}}/unicorn/config.rb
+  log_watch:
+    unicorn[stderr]: {{deploy_dir}}/var/log/unicorn/unicorn.stderr.log
+    unicorn[stdout]: {{deploy_dir}}/var/log/unicorn/unicorn.stdout.log
+{{/unicorn}}
+{{#thin}}
+  exec: bundle exec thin -R config.ru -C {{etc_dir}}/thin/config.yml
+  log_watch:
+    thin: {{deploy_dir}}/var/log/thin/thin.log
+{{/thin}}
+{{#puma}}
+  exec: bundle exec puma -C {{etc_dir}}/puma/config.rb
+  log_watch:
+    puma[stdout]: {{deploy_dir}}/var/log/puma/puma.stdout.log
+    puma[stderr]: {{deploy_dir}}/var/log/puma/puma.stderr.log
+{{/puma}}
+{{#app_rb}}
+  exec: bundle exec ruby app.rb -p 8080
+{{/app_rb}}
+{{/can_run}}

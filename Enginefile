@@ -1,0 +1,10 @@
+name: 'ruby'
+version: '0.1.0'
+summary: 'Nanobox engine for generic Ruby deployments'
+language: 'ruby'
+stability: 'stable'
+license: 'MPL'
+generic: true
+
+authors:
+  - braxton@nanobox.io
