@@ -12,6 +12,7 @@ nos_init $@
 install_runtime
 install_bundler
 install_js_runtime
+install_bower
 inject_webserver
 
 persist_evars
@@ -20,3 +21,9 @@ configure_webserver
 
 bundle_install
 bundle_clean
+
+bower_install
+
+set_js_runtime
+
+exit 0

@@ -8,6 +8,7 @@ create_boxfile() {
 boxfile_payload() {
     cat <<-END
 {
+  "has_bower": $(has_bower),
   "rackup": $(is_webserver rack),
   "unicorn": $(is_webserver unicorn),
   "thin": $(is_webserver thin),
@@ -101,6 +102,19 @@ js_runtime() {
 
 install_js_runtime() {
   install "$(js_runtime)"
+}
+
+set_js_runtime() {
+  [[ -d $(code_dir)/node_modules ]] && echo "$(js_runtime)" > $(code_dir)/node_modules/runtime
+}
+
+check_js_runtime() {
+  [[ ! -d $(code_dir)/node_modules ]] && echo "true" && return
+  [[ "$(cat $(code_dir)/node_modules/runtime)" =~ ^$(js_runtime)$ ]] && echo "true" || echo "false"
+}
+
+npm_rebuild() {
+  [[ "$(check_js_runtime)" = "false" ]] && (cd $(code_dir); run_process "npm rebuild" "npm rebuild")
 }
 
 inject_webserver() {
