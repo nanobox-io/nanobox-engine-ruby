@@ -2,6 +2,10 @@ build:
   lib_dirs:
     - vendor
     - .bundle
+{{#has_bower}}
+    - node_modules
+    - bower_components
+{{/has_bower}}
 {{#can_run}}
 web1:
   ports:
