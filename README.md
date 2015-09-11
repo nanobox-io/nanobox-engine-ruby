@@ -1,10 +1,13 @@
 # Ruby
 
-This is a generic Ruby engine used to launch [Nanobox](http://nanobox.io). This will identify a ruby project by the presence of a Gemfile in the root of the project. This will create a web if it finds a config.ru file. By default it will use [rackup](http://rack.github.io/) to start the a web server. It can also be configured to use [thin](http://code.macournoyer.com/thin/), [puma](http://puma.io/), or [unicorn](http://unicorn.bogomips.org/).
+This is a generic Ruby engine used to launch [Nanobox](http://nanobox.io) that identifies a ruby project by the presence of a Gemfile in the root of the project. The engine will create a web if it finds a config.ru file. By default it will use [rackup](http://rack.github.io/) to start the a web server. [Thin](http://code.macournoyer.com/thin/), [puma](http://puma.io/), and [unicorn](http://unicorn.bogomips.org/) are also available.
 
 ## Basic Configuration Options
 
-This engine exposes configuration option through the [Boxfile](http://docs.nanobox.io/boxfile/), a yaml config file used to provision and configure your app's infrastructure when using Nanobox. 
+This engine exposes configuration options through the [Boxfile](http://docs.nanobox.io/boxfile/), a yaml config file used to provision and configure your app's infrastructure when using Nanobox. 
+
+##### *Advanced Configuration Options*
+This Readme outlines only the most basic and commonly used settings. For the full list of available configuration options, view the **[Advanced Ruby Configuration options](https://github.com/pagodabox/nanobox-engine-ruby/blob/master/doc/advanced-ruby-config.md)**.
 
 #### Overview of Basic Boxfile Configuration Options
 ```yaml
@@ -13,34 +16,61 @@ build:
   webserver: 'unicorn'
 
   # Ruby Settings
-  ruby_version: 2.2
-
-  # Unicorn Settings
-  unicorn_preload: true
+  runtime: ruby-2.2
 ```
 
-runtime: ruby-2.2
-js-runtime: ""
-webserver: rackup
+##### Quick Links
+[Web Server Settings](#web-server-settings)  
+[Ruby Settings](#ruby-settings)   
 
-puma_quiet: false
-puma_thread_min: 0
-puma_thread_max: 16
-puma_restart_command: ""
-puma_workers: 0
-puma_prune_bundler: false
-puma_preload_app: false
-puma_worker_timeout: 60
-puma_hooks: ""
+### Web Server Settings
+The following setting is used to select which web server to use in your application.
 
-thin_timeout: 30
-thin_wait: 30
-thin_max_conns: 1024
-thin_max_persistent_conns: 100
-thin_threaded: false
-thin_no_epoll: false
-thin_require: []
+---
 
-unicorn_worker_processes: 1
-unicorn_timeout: 60
-unicorn_preload: false
+##### `webserver`
+The following web servers are available:
+
+- rackup *(default)*
+- puma
+- thin
+- unicorn
+
+```yaml
+build:
+  webserver: 'rackup'
+```
+
+Web-server-specific config options are also available. They can be found in the following sections of the Advanced Configuration doc:
+
+[Puma Settings](https://github.com/pagodabox/nanobox-engine-ruby/blob/master/doc/advanced-ruby-config.md#puma-settings)  
+[Thin Settings](https://github.com/pagodabox/nanobox-engine-ruby/blob/master/doc/advanced-ruby-config.md#thin-settings)  
+[Unicorn Settings](https://github.com/pagodabox/nanobox-engine-ruby/blob/master/doc/advanced-ruby-config.md#unicorn-settings)
+
+---
+
+### Ruby Settings
+The following setting allows you to define your Ruby runtime environment.
+
+---
+
+##### `runtime`
+Specifies which Ruby runtime and version to use. The following runtimes are available:
+
+- ruby-1.9
+- ruby-2.0
+- ruby-2.1
+- ruby-2.2 *(default)*
+- jruby-1.6
+- jruby-1.7
+- jruby-9.0
+
+```yaml
+build:
+  runtime: 'ruby-2.2'
+```
+
+---
+
+## Help & Support
+This is a generic (non-framework-specific) Ruby engine provided by [Nanobox](http://nanobox.io). If you need help with this engine, you can reach out to us in the [#nanobox IRC channel](http://webchat.freenode.net/?channels=nanobox). If you are running into an issue with the engine, feel free to [create a new issue on this project](https://github.com/pagodabox/nanobox-engine-ruby/issues/new).
