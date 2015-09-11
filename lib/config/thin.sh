@@ -1,3 +1,6 @@
+# -*- mode: bash; tab-width: 2; -*-
+# vim: ts=2 sw=2 ft=bash noet
+
 create_thin_conf() {
   mkdir -p $(etc_dir)/thin
   mkdir -p $(deploy_dir)/var/log/thin

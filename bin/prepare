@@ -1,4 +1,6 @@
 #!/bin/bash
+# -*- mode: bash; tab-width: 2; -*-
+# vim: ts=2 sw=2 ft=bash noet
 
 # source the Nos framework
 . /opt/nos/common.sh
@@ -9,21 +11,37 @@ nos_init $@
 # source common lib
 . ${engine_lib_dir}/common.sh
 
+# install ruby, jruby, or rubinius interpreters
 install_runtime
+
+# install bundler binary
 install_bundler
+
+# install node.js for static assets
 install_js_runtime
+
+# install bower via npm if Bower.json is found
 install_bower
+
+# inject thin, unicorn, or puma into Gemfile
 inject_webserver
 
+# persist all environment variables 
 persist_evars
 
+# generate config files for thin, unicorn, or puma
 configure_webserver
 
+# run bundle install
 bundle_install
+
+# clean unused gems from the vendor
 bundle_clean
 
+# run bower install if Bower.json is found
 bower_install
 
+# persist the current node.js version in the cache
 set_js_runtime
 
 exit 0

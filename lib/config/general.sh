@@ -1,3 +1,6 @@
+# -*- mode: bash; tab-width: 2; -*-
+# vim: ts=2 sw=2 ft=bash noet
+
 create_boxfile() {
   template \
     "boxfile.mustache" \
@@ -114,7 +117,7 @@ check_js_runtime() {
 }
 
 npm_rebuild() {
-  [[ "$(check_js_runtime)" = "false" ]] && (cd $(code_dir); run_process "npm rebuild" "npm rebuild")
+  [[ "$(check_js_runtime)" = "false" ]] && (cd $(code_dir); run_subprocess "npm rebuild" "npm rebuild")
 }
 
 inject_webserver() {
@@ -131,9 +134,9 @@ configure_webserver() {
 }
 
 bundle_install() {
-  (cd $(code_dir); run_process "bundle install" "bundle install --path vendor/bundle")
+  (cd $(code_dir); run_subprocess "bundle install" "bundle install --path vendor/bundle")
 }
 
 bundle_clean() {
-  (cd $(code_dir); run_process "bundle clean" "bundle clean")
+  (cd $(code_dir); run_subprocess "bundle clean" "bundle clean")
 }
