@@ -19,7 +19,8 @@ build:
   unicorn_preload: true
 ```
 
-ruby_version: 2.2
+runtime: ruby-2.2
+js-runtime: ""
 webserver: rackup
 
 puma_quiet: false

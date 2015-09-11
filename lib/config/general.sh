@@ -78,21 +78,29 @@ is_webserver() {
   echo "false"
 }
 
-ruby_version() {
-  echo $(validate "$(payload "boxfile_ruby_version")" "string" "2.2")
+runtime() {
+  echo $(validate "$(payload "boxfile_runtime")" "string" "ruby-2.2")
 }
 
-condensed_ruby_version() {
-  version=$(validate "$(payload "boxfile_ruby_version")" "string" "2.2")
-  echo ${version//./}
+condensed_runtime() {
+  version=$(validate "$(payload "boxfile_runtime")" "string" "ruby-2.2")
+  echo "${version//[.-]/}"
 }
 
-install_ruby() {
-  install "ruby-$(ruby_version)"
+install_runtime() {
+  install "$(runtime)"
 }
 
 install_bundler() {
-  install "ruby$(condensed_ruby_version)-bundler"
+  install "$(condensed_runtime)-bundler"
+}
+
+js_runtime() {
+  echo $(validate "$(payload "boxfile_js_runtime")" "string" "nodejs-0.12")
+}
+
+install_js_runtime() {
+  install "$(js_runtime)"
 }
 
 inject_webserver() {

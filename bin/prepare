@@ -11,6 +11,7 @@ nos_init $@
 
 install_ruby
 install_bundler
+install_js_runtime
 inject_webserver
 
 persist_evars
