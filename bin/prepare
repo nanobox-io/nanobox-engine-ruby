@@ -9,7 +9,7 @@ nos_init $@
 # source common lib
 . ${engine_lib_dir}/common.sh
 
-install_ruby
+install_runtime
 install_bundler
 install_js_runtime
 inject_webserver
