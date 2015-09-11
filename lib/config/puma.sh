@@ -54,12 +54,12 @@ puma_has_restart_command() {
 }
 
 puma_has_workers() {
-  [[ -n "$(validate "$(payload 'boxfile_puma_hooks')" "integer" "")" ]] && echo "true" && return
+  [[ -n "$(validate "$(payload 'boxfile_puma_workers')" "integer" "1")" ]] && echo "true" && return
   echo "false"
 }
 
 puma_workers() {
-  echo "$(validate "$(payload 'boxfile_puma_workers')" "integer" "0")"
+  echo "$(validate "$(payload 'boxfile_puma_workers')" "integer" "1")"
 }
 
 puma_prune_bundler() {

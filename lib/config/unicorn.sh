@@ -26,7 +26,7 @@ unicorn_worker_processes() {
 }
 
 unicorn_timeout() {
-  echo "$(validate "$(payload 'boxfile_unicorn_worker_processes')" "integer" "60")"
+  echo "$(validate "$(payload 'boxfile_unicorn_timeout')" "integer" "60")"
 }
 
 unicorn_preload() {

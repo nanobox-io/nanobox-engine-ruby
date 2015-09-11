@@ -18,3 +18,28 @@ build:
   # Unicorn Settings
   unicorn_preload: true
 ```
+
+ruby_version: 2.2
+webserver: rackup
+
+puma_quiet: false
+puma_thread_min: 0
+puma_thread_max: 16
+puma_restart_command: ""
+puma_workers: 0
+puma_prune_bundler: false
+puma_preload_app: false
+puma_worker_timeout: 60
+puma_hooks: ""
+
+thin_timeout: 30
+thin_wait: 30
+thin_max_conns: 1024
+thin_max_persistent_conns: 100
+thin_threaded: false
+thin_no_epoll: false
+thin_require: []
+
+unicorn_worker_processes: 1
+unicorn_timeout: 60
+unicorn_preload: false
