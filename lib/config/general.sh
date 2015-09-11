@@ -109,5 +109,9 @@ configure_webserver() {
 }
 
 bundle_install() {
-  (cd $(code_dir); run_process "bundle install" "bundle install --path vendor/bundle ")
+  (cd $(code_dir); run_process "bundle install" "bundle install --path vendor/bundle")
+}
+
+bundle_clean() {
+  (cd $(code_dir); run_process "bundle clean" "bundle clean")
 }

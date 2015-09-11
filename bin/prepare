@@ -18,3 +18,4 @@ persist_evars
 configure_webserver
 
 bundle_install
+bundle_clean

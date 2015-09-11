@@ -17,7 +17,7 @@ web1:
     unicorn[stdout]: {{deploy_dir}}/var/log/unicorn/unicorn.stdout.log
 {{/unicorn}}
 {{#thin}}
-  exec: bundle exec thin -R config.ru -C {{etc_dir}}/thin/config.yml
+  exec: bundle exec thin -R config.ru -C {{etc_dir}}/thin/config.yml start
   log_watch:
     thin: {{deploy_dir}}/var/log/thin/thin.log
 {{/thin}}

@@ -18,7 +18,6 @@ thin_conf_payload() {
   "require": "$(thin_require)",
   "environment": "$(environment)",
   "max_persistent_conns": "$(thin_max_persistent_conns)",
-  "servers": "$(thin_servers)",
   "threaded": $(thin_threaded),
   "no_epoll": $(thin_no_epoll),
   "live_dir": "$(live_dir)",
@@ -57,9 +56,6 @@ thin_max_persistent_conns() {
   echo "$(validate "$(payload 'boxfile_thin_max_persistent_conns')" "integer" "100")"
 }
 
-thin_servers() {
-  echo "$(validate "$(payload 'boxfile_thin_servers')" "integer" "1")"
-}
 
 thin_threaded() {
   echo "$(validate "$(payload 'boxfile_thin_threaded')" "boolean" "false")"

@@ -1,6 +1,6 @@
 build:
   engine: '../../../../nanobox-engine-ruby'
   stability: alpha
-  webserver: unicorn
+  webserver: thin
 web1:
   stability: alpha
