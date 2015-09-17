@@ -55,7 +55,7 @@ The following setting is used to select which web server to use in your applicat
 
 ---
 
-##### `webserver`
+#### webserver
 The following web servers are available:
 
 - rackup *(default)*
@@ -75,7 +75,7 @@ The following setting allows you to define your Ruby runtime environment.
 
 ---
 
-##### `runtime`
+#### runtime
 Specifies which Ruby runtime and version to use. The following runtimes are available:
 
 - ruby-1.9
@@ -98,7 +98,7 @@ Many applications utilize Javascript tools in some way. This engine allows you t
 
 ---
 
-##### `js_runtime`
+#### js_runtime
 Specifies which JS runtime and version to use. The following runtimes are available:
 
 - nodejs-0.8
@@ -128,7 +128,7 @@ The following settings are used to configure Puma. These only apply when using `
 
 ---
 
-##### `puma_quiet`
+#### puma_quiet
 Enables or disables request logging.
 ```yaml
 build:
@@ -137,7 +137,7 @@ build:
 
 ---
 
-##### `puma_thread_min`
+#### puma_thread_min
 Sets the minimum number of threads to use to answer requests.
 ```yaml
 build:
@@ -146,7 +146,7 @@ build:
 
 ---
 
-##### `puma_thread_max`
+#### puma_thread_max
 Sets the maximum number of threads to use to answer requests.
 ```yaml
 build:
@@ -155,7 +155,7 @@ build:
 
 ---
 
-##### `puma_restart_command`
+#### puma_restart_command
 Command to use to restart puma. This should be just how to load puma itself (ie. 'ruby -Ilib bin/puma'), not the arguments to puma, as those are the same as the original process.
 ```yaml
 build:
@@ -164,7 +164,7 @@ build:
 
 ---
 
-##### `puma_workers`
+#### puma_workers
 Defines how many worker processes should run.
 ```yaml
 build:
@@ -173,7 +173,7 @@ build:
 
 ---
 
-##### `puma_prune_bundler`
+#### puma_prune_bundler
 Allows workers to reload the bundler context when the master process is issued a USR1 signal. This allows proper reloading of gems while the master is preserved across a phased-restart. **Note:** This is incompatible with [`puma_preload_app`](#puma_preload_app).
 ```yaml
 build:
@@ -182,7 +182,7 @@ build:
 
 ---
 
-##### `puma_preload_app`
+#### puma_preload_app
 Preload the application before starting the workers. **Note:** This conflicts with phased restart feature.
 ```yaml
 build:
@@ -191,7 +191,7 @@ build:
 
 ---
 
-##### `puma_worker_timeout`
+#### puma_worker_timeout
 Sets the timeout of workers.
 ```yaml
 build:
@@ -200,7 +200,7 @@ build:
 
 ---
 
-##### `puma_hooks`
+#### puma_hooks
 The path to a ruby file which contains the code that sets up the process when a worker boots before booting the app.
 ```yaml
 build:
@@ -222,7 +222,7 @@ The following settings are using to configure Thin. They only apply when using `
 
 ---
 
-##### `thin_timeout`
+#### thin_timeout
 Sets the request or command timeout in seconds.
 ```yaml
 build:
@@ -231,7 +231,7 @@ build:
 
 ---
 
-##### `thin_wait`
+#### thin_wait
 Maximum wait time for the server to be started in seconds.
 ```yaml
 build:
@@ -240,7 +240,7 @@ build:
 
 ---
 
-##### `thin_max_conns`
+#### thin_max_conns
 Defines the maximum number of open file descriptors.
 ```yaml
 build:
@@ -249,7 +249,7 @@ build:
 
 ---
 
-##### `thin_max_persistent_conns`
+#### thin_max_persistent_conns
 Defines the maximum number of persistent connections.
 ```yaml
 build:
@@ -258,7 +258,7 @@ build:
 
 ---
 
-##### `thin_threaded`
+#### thin_threaded
 Specifies whether or not to call the Rack application in threads.
 ```yaml
 build:
@@ -267,7 +267,7 @@ build:
 
 ---
 
-##### `thin_no_epoll`
+#### thin_no_epoll
 Disables the use of epoll.
 ```yaml
 build:
@@ -276,7 +276,7 @@ build:
 
 ---
 
-##### `thin_require`
+#### thin_require
 An an array of libraries to require.
 ```yaml
 build:
@@ -294,7 +294,7 @@ The following settings are used to configure Unicorn. They only apply when using
 
 ---
 
-##### `unicorn_worker_processes`
+#### unicorn_worker_processes
 Defines the number of worker processes.
 ```yaml
 build:
@@ -303,7 +303,7 @@ build:
 
 ---
 
-##### `unicorn_timeout`
+#### unicorn_timeout
 Specifies the time after which a worker will be "nuked".
 ```yaml
 build:
@@ -312,7 +312,7 @@ build:
 
 ---
 
-##### `unicorn_preload`
+#### unicorn_preload
 Enables or disables loading the application before forking workers.
 ```yaml
 build:

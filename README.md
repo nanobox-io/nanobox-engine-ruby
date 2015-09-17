@@ -2,6 +2,17 @@
 
 This is a generic Ruby engine used to launch [Nanobox](http://nanobox.io) that identifies a ruby project by the presence of a Gemfile in the root of the project. The engine will create a web if it finds a config.ru file. By default it will use [rackup](http://rack.github.io/) to start the a web server. [Thin](http://code.macournoyer.com/thin/), [puma](http://puma.io/), and [unicorn](http://unicorn.bogomips.org/) are also available.
 
+## App Detection
+To detect a Ruby app, this engine checks for the presence of a Gemfile.
+
+## Build Process
+- `bundle install`
+- `bundle clean`
+
+## Important Things to Know
+- The engine will only create a default web service if there is a `config.ru` or an `app.rb` in the root of the application.
+- If a `config.ru` file exists, the engine will launch the app as a rack app (`webserver: rackup`), unless a different [webserver](#webserver) is specified.
+
 ## Basic Configuration Options
 
 This engine exposes configuration options through the [Boxfile](http://docs.nanobox.io/boxfile/), a yaml config file used to provision and configure your app's infrastructure when using Nanobox. 
@@ -28,7 +39,7 @@ The following setting is used to select which web server to use in your applicat
 
 ---
 
-##### `webserver`
+#### webserver
 The following web servers are available:
 
 - rackup *(default)*
@@ -54,7 +65,7 @@ The following setting allows you to define your Ruby runtime environment.
 
 ---
 
-##### `runtime`
+#### runtime
 Specifies which Ruby runtime and version to use. The following runtimes are available:
 
 - ruby-1.9
