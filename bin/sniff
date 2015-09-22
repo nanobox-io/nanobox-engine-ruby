@@ -4,6 +4,4 @@
 
 # $1 = code_dir
 
-if [ ! -f ${1}/Gemfile ]
-  exit 1
-fi
+[[ ! -f ${1}/Gemfile ]] && exit 1
