@@ -4,4 +4,5 @@
 
 # $1 = code_dir
 
-[[ ! -f ${1}/Gemfile ]] && exit 1
+[[ -f ${1}/Gemfile ]] && exit 0
+exit 1
