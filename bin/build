@@ -20,6 +20,6 @@ run_hooks "exec"
 # run Boxfile hooks defined in the "after" node
 run_hooks "after"
 
-# copy the source code into the live directory
-print_bullet "Copying release into live code directory..."
+# copy the source code into the build directory
+print_bullet "Copying code into final build..."
 rsync -a $(payload 'code_dir')/ $(payload 'live_dir')
