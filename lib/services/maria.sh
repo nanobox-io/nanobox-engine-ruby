@@ -2,7 +2,7 @@
 # vim: ts=2 sw=2 ft=bash noet
 
 requires_maria() {
-  if [[ "$(cat $(code_dir)/Gemfile | grep 'mysql' )" != "" && "$(cat $(code_dir)/Boxfile)" != "mariadb" ]]; then
+  if [[ "$(cat $(code_dir)/Gemfile | grep 'mysql' )" != "" && "$(cat $(code_dir)/Boxfile | grep 'mariadb')" != "" ]]; then
     echo "true"
   else
     echo "false"
@@ -10,5 +10,5 @@ requires_maria() {
 }
 
 install_maria_dev_libs() {
-  install ""
+  install "mariadb-galera-client"
 }
