@@ -23,6 +23,9 @@ install_js_runtime
 # install bower via npm if Bower.json is found
 install_bower
 
+# install dependencies for services so native extensions can be compiled
+install_dependencies
+
 # inject thin, unicorn, or puma into Gemfile
 inject_webserver
 

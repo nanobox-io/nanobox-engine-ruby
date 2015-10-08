@@ -1,0 +1,8 @@
+build:
+  engine: '../../../../nanobox-engine-ruby'
+  stability: alpha
+  webserver: puma
+web1:
+  stability: alpha
+postgresql1:
+  name: database
