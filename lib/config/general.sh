@@ -121,7 +121,7 @@ npm_rebuild() {
 }
 
 inject_webserver() {
-  if [[ "$(is_rackup)" = "true" && "$(cat $(code_dir)/Gemfile | grep '$(webserver)')" = "" ]]; then
+  if [[ "$(is_rackup)" = "true" && "$(cat $(code_dir)/Gemfile | grep $(webserver))" = "" ]]; then
     echo "" >> $(code_dir)/Gemfile
     echo "gem '$(webserver)'" >> $(code_dir)/Gemfile
   fi
