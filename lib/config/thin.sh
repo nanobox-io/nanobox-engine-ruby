@@ -4,7 +4,6 @@
 create_thin_conf() {
   mkdir -p $(etc_dir)/thin
   mkdir -p $(deploy_dir)/var/log/thin
-  mkdir -p $(deploy_dir)/var/run
   template \
     "thin/config.yml.mustache" \
     "$(etc_dir)/thin/config.yml" \
