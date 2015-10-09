@@ -4,7 +4,6 @@
 create_puma_conf() {
   mkdir -p $(etc_dir)/puma
   mkdir -p $(deploy_dir)/var/log/puma
-  mkdir -p $(deploy_dir)/var/run
   template \
     "puma/config.rb.mustache" \
     "$(etc_dir)/puma/config.rb" \

@@ -121,13 +121,14 @@ npm_rebuild() {
 }
 
 inject_webserver() {
-  if [[ "$(is_rackup)" = "true" ]]; then
+  if [[ "$(is_rackup)" = "true" && "$(cat $(code_dir)/Gemfile | grep '$(webserver)')" = "" ]]; then
     echo "" >> $(code_dir)/Gemfile
     echo "gem '$(webserver)'" >> $(code_dir)/Gemfile
   fi
 }
 
 configure_webserver() {
+  mkdir -p $(deploy_dir)/var/run
   [[ "$(webserver)" = "puma" ]] && create_puma_conf
   [[ "$(webserver)" = "thin" ]] && create_thin_conf
   [[ "$(webserver)" = "unicorn" ]] && create_unicorn_conf

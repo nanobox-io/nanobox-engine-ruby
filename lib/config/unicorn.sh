@@ -4,7 +4,6 @@
 create_unicorn_conf() {
   mkdir -p $(etc_dir)/unicorn
   mkdir -p $(deploy_dir)/var/log/unicorn
-  mkdir -p $(deploy_dir)/var/run
   template \
     "unicorn/config.rb.mustache" \
     "$(etc_dir)/unicorn/config.rb" \
