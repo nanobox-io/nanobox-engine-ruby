@@ -2,6 +2,7 @@
 # vim: ts=2 sw=2 ft=bash noet
 
 create_puma_conf() {
+  print_bullet "Configuring Puma"
   mkdir -p $(etc_dir)/puma
   mkdir -p $(deploy_dir)/var/log/puma
   template \
@@ -11,24 +12,45 @@ create_puma_conf() {
 }
 
 puma_conf_payload() {
+  _puma_quiet=$(puma_quiet)
+  _puma_thread_min=$(puma_thread_min)
+  _puma_thread_max=$(puma_thread_max)
+  _puma_restart_command=$(puma_restart_command)
+  _puma_has_restart_command=$(puma_has_restart_command)
+  _puma_has_workers=$(puma_has_workers)
+  _puma_workers=$(puma_workers)
+  _puma_prune_bundler=$(puma_prune_bundler)
+  _puma_preload_app=$(puma_preload_app)
+  _puma_worker_timeout=$(puma_worker_timeout)
+  _puma_has_hooks=$(puma_has_hooks)
+  _puma_hooks=$(puma_hooks)
+  print_bullet_sub "quiet: ${_puma_quiet}"
+  print_bullet_sub "thread min: ${_puma_thread_min}"
+  print_bullet_sub "thread max: ${_puma_thread_max}"
+  [[ "${_puma_has_restart_command}" = "true" ]] && print_bullet_sub "restart command: ${_puma_restart_command}"
+  [[ "${_puma_has_workers}" = "true" ]] && print_bullet_sub "workers: ${_puma_workers}"
+  print_bullet_sub "prune bundler: ${_puma_prune_bundler}"
+  print_bullet_sub "preload app: ${_puma_preload_app}"
+  print_bullet_sub "worker timeout: ${_puma_worker_timeout}"
+  [[ "${_puma_has_hooks}" = "true" ]] && print_bullet_sub "hooks: ${_puma_hooks}"
   cat <<-END
 {
   "live_dir": "$(live_dir)",
   "environment": "$(environment)",
   "deploy_dir": "$(deploy_dir)",
-  "quiet": $(puma_quiet),
-  "thread_min": "$(puma_thread_min)",
-  "thread_max": "$(puma_thread_max)",
-  "restart_command": "$(puma_restart_command)",
-  "has_restart_command": $(puma_has_restart_command),
-  "has_workers": $(puma_has_workers),
-  "workers": "$(puma_workers)",
-  "prune_bundler": $(puma_prune_bundler),
-  "preload_app": $(puma_preload_app),
+  "quiet": ${_puma_quiet},
+  "thread_min": "${_puma_thread_min}",
+  "thread_max": "${_puma_thread_max}",
+  "restart_command": "${_puma_restart_command}",
+  "has_restart_command": ${_puma_has_restart_command},
+  "has_workers": ${_puma_has_workers},
+  "workers": "${_puma_workers}",
+  "prune_bundler": ${_puma_prune_bundler},
+  "preload_app": ${_puma_preload_app},
   "app_name": "$(app_name)",
-  "worker_timeout": $(puma_worker_timeout),
-  "has_hooks": $(puma_has_hooks),
-  "puma_hooks": "$(puma_hooks)"
+  "worker_timeout": ${_puma_worker_timeout},
+  "has_hooks": ${_puma_has_hooks},
+  "puma_hooks": "${_puma_hooks}"
 }
 END
 }

@@ -2,6 +2,7 @@
 # vim: ts=2 sw=2 ft=bash noet
 
 create_thin_conf() {
+  print_bullet "Configuring Thin"
   mkdir -p $(etc_dir)/thin
   mkdir -p $(deploy_dir)/var/log/thin
   template \
@@ -11,6 +12,20 @@ create_thin_conf() {
 }
 
 thin_conf_payload() {
+  _thin_timeout=$(thin_timeout)
+  _thin_wait=$(thin_wait)
+  _thin_max_conns=$(thin_max_conns)
+  _thin_require=$(thin_require)
+  _thin_max_persistent_conns=$(thin_max_persistent_conns)
+  _thin_threaded=$(thin_threaded)
+  _thin_no_epoll=$(thin_no_epoll)
+  print_bullet_sub "Timeout: ${_thin_timeout}"
+  print_bullet_sub "Wait: ${_thin_wait}"
+  print_bullet_sub "Max conns: ${_thin_max_conns}"
+  print_bullet_sub "Require: ${_thin_require}"
+  print_bullet_sub "Max persistent_conns: ${_thin_max_persistent_conns}"
+  print_bullet_sub "Threaded: ${_thin_threaded}"
+  print_bullet_sub "No epoll: ${_thin_no_epoll}"
   cat <<-END
 {
   "deploy_dir": "$(deploy_dir)",

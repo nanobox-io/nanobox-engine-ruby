@@ -9,16 +9,37 @@ create_boxfile() {
 }
 
 boxfile_payload() {
-    cat <<-END
+  _has_bower=$(has_bower)
+  _webserver=$(webserver)
+  _can_run=$(can_run)
+  _app_rb=$(app_rb)
+  if [[ "${_can_run}" = "true" ]]; then
+    print_bullet_sub "Creating web service"
+    if [[ "${_webserver}" = "puma" ]]; then
+      print_bullet_info "Using Puma as webserver"
+    elif [[ "${_webserver}" = "thin" ]]; then
+      print_bullet_info "Using Thin as webserver"
+    elif [[ "${_webserver}" = "unicorn" ]]; then
+      print_bullet_info "Using Unicorn as webserver"
+    elif [[ "${_app_rb}" = "true" ]]; then
+      print_bullet_info "Running 'ruby app.rb' to start service"
+    fi
+  else
+    print_warning "Did not find config.ru or app.rb, not configuring web service"
+  fi
+  if [[ "${_has_bower}" = "true" ]]; then
+    print_bullet_sub "Adding lib_dirs for bower"
+  fi
+  print_bullet "Detecting settings"
+  cat <<-END
 {
-  "has_bower": $(has_bower),
+  "has_bower": ${_has_bower},
   "rackup": $(is_webserver rack),
   "unicorn": $(is_webserver unicorn),
   "thin": $(is_webserver thin),
   "puma": $(is_webserver puma),
-  "is_rackup": $(is_rackup),
-  "can_run": $(can_run),
-  "app_rb": $(app_rb),
+  "can_run": ${_can_run},
+  "app_rb": ${_app_rb},
   "live_dir": "$(live_dir)",
   "etc_dir": "$(etc_dir)",
   "deploy_dir": "$(deploy_dir)"
@@ -62,19 +83,32 @@ environment() {
 }
 
 app_rb() {
-  [[ "$(is_rackup)" = "false" && -f $(code_dir)/app.rb ]] && echo "true" || echo "false"
+  if [[ "$(is_rackup)" = "false" && -f $(code_dir)/app.rb ]]; then
+    echo "true"
+  else
+    echo "false"
+  fi
 }
 
 can_run() {
-  [[ -f $(code_dir)/config.ru || -f $(code_dir)/app.rb ]] && echo "true" || echo "false"
+  if [[ -f $(code_dir)/config.ru || -f $(code_dir)/app.rb ]]; then
+    echo "true"
+  else
+    echo "false"
+  fi
 }
 
 is_rackup() {
-  [[ -f $(code_dir)/config.ru ]] && echo "true" || echo "false"
+  if [[ -f $(code_dir)/config.ru ]]; then 
+    echo "true"
+  else
+    echo "false"
+  fi
 }
 
 webserver() {
-  echo $(validate "$(payload "boxfile_webserver")" "string" "rack")
+  _webserver=$(validate "$(payload "boxfile_webserver")" "string" "rack")
+  echo ${_webserver}
 }
 
 is_webserver() {
@@ -100,7 +134,8 @@ install_bundler() {
 }
 
 js_runtime() {
-  echo $(validate "$(payload "boxfile_js_runtime")" "string" "nodejs-0.12")
+  _js_runtime=$(validate "$(payload "boxfile_js_runtime")" "string" "nodejs-0.12")
+  echo "${_js_runtime}"
 }
 
 install_js_runtime() {
@@ -135,9 +170,17 @@ configure_webserver() {
 }
 
 bundle_install() {
-  (cd $(code_dir); run_subprocess "bundle install" "bundle install --path vendor/bundle")
+  if [[ -f $(code_dir)/Gemfile ]]; then
+    (cd $(code_dir); run_subprocess "bundle install" "bundle install --path vendor/bundle")
+  else
+    print_bullet_info "Gemfile not found, not running 'bundle install'"
+  fi
 }
 
 bundle_clean() {
-  (cd $(code_dir); run_subprocess "bundle clean" "bundle clean")
+  if [[ -f $(code_dir)/Gemfile ]]; then
+    (cd $(code_dir); run_subprocess "bundle clean" "bundle clean")
+  else
+    print_bullet_info "Gemfile not found, not running 'bundle clean'"
+  fi
 }
