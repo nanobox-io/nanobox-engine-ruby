@@ -12,14 +12,14 @@ nos_init $@
 . ${engine_lib_dir}/common.sh
 
 # run Boxfile hooks defined in the "before" node
-run_hooks "before"
+nos_run_hooks "before"
 
 # run Boxfile hooks defined in the "exec" node
-run_hooks "exec"
+nos_run_hooks "exec"
 
 # run Boxfile hooks defined in the "after" node
-run_hooks "after"
+nos_run_hooks "after"
 
 # copy the source code into the build directory
-print_bullet "Copying code into final build..."
+nos_print_bullet "Copying code into final build..."
 rsync -a $(payload 'code_dir')/ $(payload 'live_dir')

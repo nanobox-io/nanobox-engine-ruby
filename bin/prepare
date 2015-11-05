@@ -11,45 +11,45 @@ nos_init $@
 # source common lib
 . ${engine_lib_dir}/common.sh
 
-print_process_start "Installing packages"
+nos_print_process_start "Installing packages"
 
 # install java runtime, if jruby is being used
-install_java_runtime
+java_install_runtime
 
 # install ruby, jruby, or rubinius interpreters
-install_runtime
+ruby_install_runtime
 
 # install bundler binary
-install_bundler
+ruby_install_bundler
 
 # install node.js for static assets
-install_js_runtime
+nodejs_install_runtime
 
 # install bower via npm if Bower.json is found
-install_bower
+nodejs_install_bower
 
 # install dependencies for services so native extensions can be compiled
-install_dependencies
+ruby_install_dependencies
 
 # inject thin, unicorn, or puma into Gemfile
-inject_webserver
+ruby_inject_webserver
 
 # persist all environment variables 
-persist_evars
+nos_persist_evars
 
 # generate config files for thin, unicorn, or puma
-configure_webserver
+ruby_configure_webserver
 
 # run bundle install
-bundle_install
+ruby_bundle_install
 
 # clean unused gems from the vendor
-bundle_clean
+ruby_bundle_clean
 
 # run bower install if Bower.json is found
-bower_install
+nodejs_bower_install
 
 # persist the current node.js version in the cache
-set_js_runtime
+nodejs_set_runtime
 
 exit 0

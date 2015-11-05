@@ -5,6 +5,9 @@ language: 'ruby'
 stability: 'stable'
 license: 'MPL'
 generic: true
+overlays:
+  - nodejs
+  - java
 
 authors:
   - braxton@nanobox.io
