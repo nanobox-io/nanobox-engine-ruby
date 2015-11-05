@@ -3,7 +3,6 @@
 
 . ${engine_lib_dir}/nodejs.sh
 . ${engine_lib_dir}/java.sh
-. ${engine_lib_dir}/ruby/bower.sh
 . ${engine_lib_dir}/ruby/general.sh
 . ${engine_lib_dir}/ruby/puma.sh
 . ${engine_lib_dir}/ruby/thin.sh
