@@ -1,6 +1,7 @@
 build:
   engine: '../../../../nanobox-engine-ruby'
-  stability: alpha
+  runtime: jruby-9.0
+  stability: beta
   webserver: puma
 web1:
-  stability: alpha
+  stability: beta
