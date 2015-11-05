@@ -6,7 +6,6 @@ stability: 'stable'
 license: 'MPL'
 generic: true
 overlays:
-  - nodejs
   - java
 
 authors:

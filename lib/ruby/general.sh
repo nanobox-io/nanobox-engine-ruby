@@ -111,6 +111,12 @@ ruby_install_runtime() {
   nos_install "$(ruby_runtime)"
 }
 
+ruby_install_java_runtime() {
+  if [[ "$(ruby_runtime)" =~ "jruby" ]]; then
+    java_install_runtime
+  fi
+}
+
 ruby_install_bundler() {
   nos_install "$(ruby_condensed_runtime)-bundler"
 }

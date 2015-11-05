@@ -9,7 +9,7 @@
 nos_init $@
 
 # source common lib
-. ${engine_lib_dir}/common.sh
+. ${engine_lib_dir}/ruby.sh
 
 # dynamically generate a Boxfile from a template,
 # and print to stdout

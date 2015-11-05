@@ -9,12 +9,12 @@
 nos_init $@
 
 # source common lib
-. ${engine_lib_dir}/common.sh
+. ${engine_lib_dir}/ruby.sh
 
 nos_print_process_start "Installing packages"
 
 # install java runtime, if jruby is being used
-java_install_runtime
+ruby_install_java_runtime
 
 # install ruby, jruby, or rubinius interpreters
 ruby_install_runtime
