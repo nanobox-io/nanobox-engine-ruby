@@ -2,9 +2,9 @@
 # vim: ts=2 sw=2 ft=bash noet
 
 requires_redis() {
-	echo "false"
+  echo "false"
 }
 
 install_redis_dev_libs() {
-	return
+  return
 }

@@ -2,9 +2,9 @@
 # vim: ts=2 sw=2 ft=bash noet
 
 requires_mongo() {
-	echo "false"
+  echo "false"
 }
 
 install_mongo_dev_libs() {
-	return
+  return
 }

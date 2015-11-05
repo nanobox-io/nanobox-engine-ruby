@@ -133,6 +133,11 @@ install_bundler() {
   install "$(condensed_runtime)-bundler"
 }
 
+java_runtime() {
+  _java_runtime=$(validate "$(payload "boxfile_java_runtime")" "string" "sun-jdk8")
+  echo "${_java_runtime}"
+}
+
 js_runtime() {
   _js_runtime=$(validate "$(payload "boxfile_js_runtime")" "string" "nodejs-0.12")
   echo "${_js_runtime}"
@@ -140,6 +145,10 @@ js_runtime() {
 
 install_js_runtime() {
   install "$(js_runtime)"
+}
+
+install_java_runtime() {
+  [[ "$(runtime)" =~ "jruby" ]] && install "$(java_runtime)"
 }
 
 set_js_runtime() {

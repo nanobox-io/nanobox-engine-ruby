@@ -13,6 +13,9 @@ nos_init $@
 
 print_process_start "Installing packages"
 
+# install java runtime, if jruby is being used
+install_java_runtime
+
 # install ruby, jruby, or rubinius interpreters
 install_runtime
 
