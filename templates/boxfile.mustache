@@ -12,7 +12,7 @@ web1:
     - 80:8080
     - 443:8080
 {{#rackup}}
-  exec: bundle exec rackup --port 8080 -P {{deploy_dir}}/var/run/rackup.pid config.ru
+  exec: bundle exec rackup --host 0.0.0.0 --port 8080 -P {{deploy_dir}}/var/run/rackup.pid config.ru
 {{/rackup}}
 {{#unicorn}}
   exec: bundle exec unicorn -c {{etc_dir}}/unicorn/config.rb

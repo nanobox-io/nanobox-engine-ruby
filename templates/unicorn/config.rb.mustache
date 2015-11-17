@@ -26,7 +26,7 @@ working_directory "{{live_dir}}" # available in 0.94.0+
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
-listen 8080
+listen "127.0.0.1:8080"
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout {{timeout}}
@@ -55,4 +55,3 @@ GC.respond_to?(:copy_on_write_friendly=) and
 # host unicorn runs on, and unlikely to detect disconnects even on a
 # fast LAN.
 check_client_connection false
-
