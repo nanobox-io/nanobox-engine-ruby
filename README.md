@@ -27,7 +27,7 @@ build:
   webserver: 'unicorn'
 
   # Ruby Settings
-  runtime: ruby-2.2
+  ruby_runtime: ruby-2.2
 ```
 
 ##### Quick Links
@@ -65,7 +65,7 @@ The following setting allows you to define your Ruby runtime environment.
 
 ---
 
-#### runtime
+#### ruby_runtime
 Specifies which Ruby runtime and version to use. The following runtimes are available:
 
 - ruby-1.9
@@ -78,7 +78,7 @@ Specifies which Ruby runtime and version to use. The following runtimes are avai
 
 ```yaml
 build:
-  runtime: 'ruby-2.2'
+  ruby_runtime: 'ruby-2.2'
 ```
 
 ---
