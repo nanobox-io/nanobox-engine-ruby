@@ -18,7 +18,7 @@ To detect a Ruby app, this engine checks for the presence of a Gemfile.
 This engine exposes configuration options through the [Boxfile](http://docs.nanobox.io/boxfile/), a yaml config file used to provision and configure your app's infrastructure when using Nanobox. 
 
 ##### *Advanced Configuration Options*
-This Readme outlines only the most basic and commonly used settings. For the full list of available configuration options, view the **[Advanced Ruby Configuration options](https://github.com/pagodabox/nanobox-engine-ruby/blob/master/doc/advanced-ruby-config.md)**.
+This Readme outlines only the most basic and commonly used settings. For the full list of available configuration options, view the **[Advanced Ruby Configuration options](https://github.com/nanobox-io/nanobox-engine-ruby/blob/master/doc/advanced-ruby-config.md)**.
 
 #### Overview of Basic Boxfile Configuration Options
 ```yaml
@@ -54,9 +54,9 @@ build:
 
 Web-server-specific config options are also available. They can be found in the following sections of the Advanced Configuration doc:
 
-[Puma Settings](https://github.com/pagodabox/nanobox-engine-ruby/blob/master/doc/advanced-ruby-config.md#puma-settings)  
-[Thin Settings](https://github.com/pagodabox/nanobox-engine-ruby/blob/master/doc/advanced-ruby-config.md#thin-settings)  
-[Unicorn Settings](https://github.com/pagodabox/nanobox-engine-ruby/blob/master/doc/advanced-ruby-config.md#unicorn-settings)
+[Puma Settings](https://github.com/nanobox-io/nanobox-engine-ruby/blob/master/doc/advanced-ruby-config.md#puma-settings)  
+[Thin Settings](https://github.com/nanobox-io/nanobox-engine-ruby/blob/master/doc/advanced-ruby-config.md#thin-settings)  
+[Unicorn Settings](https://github.com/nanobox-io/nanobox-engine-ruby/blob/master/doc/advanced-ruby-config.md#unicorn-settings)
 
 ---
 
@@ -84,4 +84,4 @@ build:
 ---
 
 ## Help & Support
-This is a generic (non-framework-specific) Ruby engine provided by [Nanobox](http://nanobox.io). If you need help with this engine, you can reach out to us in the [#nanobox IRC channel](http://webchat.freenode.net/?channels=nanobox). If you are running into an issue with the engine, feel free to [create a new issue on this project](https://github.com/pagodabox/nanobox-engine-ruby/issues/new).
+This is a generic (non-framework-specific) Ruby engine provided by [Nanobox](http://nanobox.io). If you need help with this engine, you can reach out to us in the [#nanobox IRC channel](http://webchat.freenode.net/?channels=nanobox). If you are running into an issue with the engine, feel free to [create a new issue on this project](https://github.com/nanobox-io/nanobox-engine-ruby/issues/new).
