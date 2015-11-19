@@ -11,10 +11,10 @@ build:
   webserver: 'rackup'
 
   # Ruby Settings
-  runtime: ruby-2.2
+  ruby_runtime: ruby-2.2
 
-  # JS Runtime Settings
-  js-runtime: nodejs-0.12
+  # Node.js Runtime Settings
+  nodejs-runtime: nodejs-4.2
 
   # Puma Settings
   puma_quiet: false
@@ -45,7 +45,7 @@ build:
 ##### Quick Links
 [Web Server Settings](#web-server-settings)  
 [Ruby Settings](#ruby-settings)  
-[JS Runtime Settings](#js-runtime-settings)  
+[Node.js Runtime Settings](#nodejs-runtime-settings)  
 [Puma Settings](#puma-settings)  
 [Thin Settings](#thin-settings)  
 [Unicorn Settings](#unicorn-settings)  
@@ -75,7 +75,7 @@ The following setting allows you to define your Ruby runtime environment.
 
 ---
 
-#### runtime
+#### ruby_runtime
 Specifies which Ruby runtime and version to use. The following runtimes are available:
 
 - ruby-1.9
@@ -88,27 +88,28 @@ Specifies which Ruby runtime and version to use. The following runtimes are avai
 
 ```yaml
 build:
-  runtime: 'ruby-2.2'
+  ruby_runtime: 'ruby-2.2'
 ```
 
 ---
 
-### JS Runtime Settings
-Many applications utilize Javascript tools in some way. This engine allows you to specify which JS runtime you'd like to use.
+### Node.js Runtime Settings
+Many applications utilize Javascript tools in some way. This engine allows you to specify which Node.js runtime you'd like to use.
 
 ---
 
-#### js_runtime
+#### nodejs_runtime
 Specifies which JS runtime and version to use. The following runtimes are available:
 
 - nodejs-0.8
 - nodejs-0.10
 - nodejs-0.12
+- nodejs-4.2
 - iojs-2.3
 
 ```yaml
 build:
-  js_runtime: 'nodejs-0.12'
+  nodejs_runtime: nodejs-4.2
 ```
 
 ---
@@ -322,4 +323,4 @@ build:
 ---
 
 ## Help & Support
-This is a generic (non-framework-specific) Ruby engine provided by [Nanobox](http://nanobox.io). If you need help with this engine, you can reach out to us in the [#nanobox IRC channel](http://webchat.freenode.net/?channels=nanobox). If you are running into an issue with the engine, feel free to [create a new issue on this project](https://github.com/pagodabox/nanobox-engine-ruby/issues/new).
+This is a generic (non-framework-specific) Ruby engine provided by [Nanobox](http://nanobox.io). If you need help with this engine, you can reach out to us in the [#nanobox IRC channel](http://webchat.freenode.net/?channels=nanobox). If you are running into an issue with the engine, feel free to [create a new issue on this project](https://github.com/nanobox-io/nanobox-engine-ruby/issues/new).
