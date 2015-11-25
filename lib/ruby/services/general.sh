@@ -17,8 +17,8 @@ ruby_install_dependencies() {
     ruby_install_mongo_dev_libs
   fi
   # mysql
-  if [[ "$(ruby_requires_mongo)" = "true" ]]; then
-    ruby_install_mongo_dev_libs
+  if [[ "$(ruby_requires_mysql)" = "true" ]]; then
+    ruby_install_mysql_dev_libs
   fi
   # percona
   if [[ "$(ruby_requires_percona)" = "true" ]]; then
