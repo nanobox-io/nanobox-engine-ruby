@@ -1,5 +1,5 @@
 name: 'ruby'
-version: '0.1.11'
+version: '0.1.12'
 summary: 'Nanobox engine for generic Ruby deployments'
 language: 'ruby'
 stability: 'stable'
