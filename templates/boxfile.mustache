@@ -9,8 +9,8 @@ build:
 {{#can_run}}
 web1:
   ports:
-    - 80:8080
-    - 443:8080
+    - http:80:8080
+    - http:443:8080
 {{#rackup}}
   exec: bundle exec rackup --host 0.0.0.0 --port 8080 -P {{deploy_dir}}/var/run/rackup.pid config.ru
 {{/rackup}}
