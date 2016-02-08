@@ -86,32 +86,31 @@ setup() {
 }
 
 @test "verify" {
-  skip
-  # # remove the code dir
-  # rm -rf /tmp/code
-  #
-  # # mv the live_dir to code_dir
-  # mv /tmp/live /tmp/code
-  #
-  # # cd into the live code_dir
-  # cd /tmp/code
-  #
-  # # start the server in the background
-  # node server.js > /dev/null 2>&1 &
-  #
-  # # grab the pid
-  # pid=$!
-  #
-  # # sleep a few seconds so the server can start
-  # sleep 3
-  #
-  # # curl the index
-  # run curl -s 127.0.0.1:8080 2>/dev/null
-  #
-  # expected="Node.js - Express - Hello World!"
-  #
-  # # kill the server
-  # kill -9 $pid > /dev/null 2>&1
-  #
-  # [ "$output" = "$expected" ]
+  # remove the code dir
+  rm -rf /tmp/code
+
+  # mv the live_dir to code_dir
+  mv /tmp/live /tmp/code
+
+  # cd into the live code_dir
+  cd /tmp/code
+
+  # start the server in the background
+  bundle exec ruby app.rb -p 8080 > /dev/null 2>&1 &
+
+  # grab the pid
+  pid=$!
+
+  # sleep a few seconds so the server can start
+  sleep 3
+
+  # curl the index
+  run curl -s 127.0.0.1:8080 2>/dev/null
+
+  expected="Hello World"
+
+  # kill the server
+  kill -9 $pid > /dev/null 2>&1
+
+  [ "$output" = "$expected" ]
 }

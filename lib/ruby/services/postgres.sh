@@ -2,7 +2,7 @@
 # vim: ts=2 sw=2 ft=bash noet
 
 ruby_requires_postgres() {
-  if [[ "$(cat $(nos_code_dir)/Gemfile | grep 'pg' )" != "" && "$(cat $(nos_code_dir)/Boxfile | grep 'postgresql')" != "" ]]; then
+  if [[ "$(cat $(nos_code_dir)/Gemfile | grep 'pg' )" != "" ]]; then
     echo "true"
   else
     echo "false"
