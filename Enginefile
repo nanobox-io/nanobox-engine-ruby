@@ -1,12 +1,9 @@
 name: 'ruby'
-version: '0.1.15'
-summary: 'Nanobox engine for generic Ruby deployments'
-language: 'ruby'
+version: '0.2.0'
+summary: 'Nanobox engine for Ruby apps'
 stability: 'stable'
 license: 'MPL'
-generic: true
-overlays:
-  - java
 
 authors:
   - braxton@nanobox.io
+  - tyler@nanobox.io

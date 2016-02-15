@@ -69,3 +69,29 @@ bundle_clean() {
     cd -
   fi
 }
+
+# installs dev packages for dependencies of this app
+install_dependencies() {
+  deps="$(query_dependencies)"
+  nos_install $deps
+}
+
+# compiles a list of dependencies that will need to be installed
+query_dependencies() {
+  deps=()
+
+  # mysql
+  if [[ `cat $(nos_code_dir)/Gemfile | grep 'mysql'` ]]; then
+    deps+=(mysql-client)
+  fi
+  # memcache
+  if [[ `cat $(nos_code_dir)/Gemfile | grep 'memcache'` ]]; then
+    deps+=(libmemcached)
+  fi
+  # postgres
+  if [[ `cat $(nos_code_dir)/Gemfile | grep 'pg'` ]]; then
+    deps+=(postgresql94-client)
+  fi
+
+  echo "${deps[@]}"
+}
