@@ -72,7 +72,7 @@ bundle_clean() {
 
 # installs dev packages for dependencies of this app
 install_dependencies() {
-  deps="$(query_dependencies)"
+  deps=("$(query_dependencies)")
   nos_install $deps
 }
 
