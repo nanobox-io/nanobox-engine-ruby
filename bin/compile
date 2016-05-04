@@ -11,10 +11,10 @@ nos_init "$@"
 # source common lib
 . ${engine_lib_dir}/ruby.sh
 
-# install ruby, jruby, or rubinius interpreters and bundler
-install_runtime
+# Run the bundle install
+bundle_install
 
-# install dependencies for services so native extensions can be compiled
-# install_dependencies
+# Clean old things out of the bundle
+bundle_clean
 
 exit 0

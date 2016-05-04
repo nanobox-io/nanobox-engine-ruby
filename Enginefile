@@ -1,9 +1,0 @@
-name: 'ruby'
-version: '0.2.0'
-summary: 'Nanobox engine for Ruby apps'
-stability: 'stable'
-license: 'MPL'
-
-authors:
-  - braxton@nanobox.io
-  - tyler@nanobox.io

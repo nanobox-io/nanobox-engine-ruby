@@ -1,4 +1,4 @@
-# Integration test for a simple ruby app
+# Integration test for a simple nodejs app
 
 # source environment helpers
 . util/env.sh
@@ -7,21 +7,12 @@ payload() {
   cat <<-END
 {
   "code_dir": "/tmp/code",
-  "deploy_dir": "/data",
-  "live_dir": "/tmp/live",
+  "data_dir": "/data",
+  "app_dir": "/tmp/app",
   "cache_dir": "/tmp/cache",
   "etc_dir": "/data/etc",
   "env_dir": "/data/etc/env.d",
-  "app": "simple-ruby",
-  "env": {
-    "APP_NAME": "simple-ruby"
-  },
-  "dns": [
-    "simple-ruby.dev"
-  ],
-  "boxfile": {},
-  "platform": "local",
-  "run": true
+  "config": {}
 }
 END
 }
@@ -49,12 +40,6 @@ setup() {
   [ "$output" = "/engine/bin" ]
 }
 
-@test "sniff" {
-  run /engine/bin/sniff /tmp/code
-
-  [ "$status" -eq 0 ]
-}
-
 @test "boxfile" {
   run /engine/bin/boxfile "$(payload)"
 
@@ -69,8 +54,8 @@ setup() {
   [ "$status" -eq 0 ]
 }
 
-@test "build" {
-  run /engine/bin/build "$(payload)"
+@test "compile" {
+  run /engine/bin/compile "$(payload)"
 
   echo "$output"
 
@@ -85,12 +70,20 @@ setup() {
   [ "$status" -eq 0 ]
 }
 
+@test "release" {
+  run /engine/bin/release "$(payload)"
+
+  echo "$output"
+
+  [ "$status" -eq 0 ]
+}
+
 @test "verify" {
   # remove the code dir
   rm -rf /tmp/code
 
   # mv the live_dir to code_dir
-  mv /tmp/live /tmp/code
+  mv /tmp/app /tmp/code
 
   # cd into the live code_dir
   cd /tmp/code
@@ -108,6 +101,8 @@ setup() {
   run curl -s 127.0.0.1:8080 2>/dev/null
 
   expected="Hello World"
+
+  echo "$output"
 
   # kill the server
   kill -9 $pid > /dev/null 2>&1

@@ -4,7 +4,7 @@
 # Copy the code into the live directory which will be used to run the app
 publish_release() {
   nos_print_bullet "Moving build into live code directory..."
-  rsync -a $(nos_code_dir)/ $(nos_live_dir)
+  rsync -a $(nos_code_dir)/ $(nos_app_dir)
 }
 
 # Determine the ruby runtime to install. This will first check
@@ -34,7 +34,7 @@ gemfile_runtime() {
 
 # Install the ruby runtime.
 install_runtime() {
-  nos_install "$(runtime)"
+  nos_install "$(runtime)" "$(condensed_runtime)-bundler"
 }
 
 # The bundler package will look something like ruby22-bundler so
@@ -42,11 +42,6 @@ install_runtime() {
 condensed_runtime() {
   version=$(runtime)
   echo "${version//[.-]/}"
-}
-
-# Bundler is a separate package that needs to be installed
-install_bundler() {
-  nos_install "$(condensed_runtime)-bundler"
 }
 
 # Install dependencies from Gemfile
