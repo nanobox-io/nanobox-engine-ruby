@@ -32,11 +32,11 @@ END
 
   bundle_ran="false"
 
-  stub_and_eval "nos_run_subprocess" "bundle_ran=\"true\""
+  stub_and_eval "nos_run_process" "bundle_ran=\"true\""
 
   bundle_install
 
-  restore "nos_run_subprocess"
+  restore "nos_run_process"
   bundle_installed="false"
 
   [ "$bundle_ran" = "false" ]
@@ -53,14 +53,14 @@ END
 
   bundle_ran="false"
 
-  stub_and_eval "nos_run_subprocess" "bundle_ran=\"true\""
+  stub_and_eval "nos_run_process" "bundle_ran=\"true\""
 
   mkdir -p /tmp/code
   touch /tmp/code/Gemfile
 
   bundle_install
 
-  restore "nos_run_subprocess"
+  restore "nos_run_process"
 
   [ "$bundle_ran" = "true" ]
 }
@@ -76,11 +76,11 @@ END
 
   bundle_ran="false"
 
-  stub_and_eval "nos_run_subprocess" "bundle_ran=\"true\""
+  stub_and_eval "nos_run_process" "bundle_ran=\"true\""
 
   bundle_clean
 
-  restore "nos_run_subprocess"
+  restore "nos_run_process"
   bundle_installed="false"
 
   [ "$bundle_ran" = "false" ]
@@ -97,14 +97,14 @@ END
 
   bundle_ran="false"
 
-  stub_and_eval "nos_run_subprocess" "bundle_ran=\"true\""
+  stub_and_eval "nos_run_process" "bundle_ran=\"true\""
 
   mkdir -p /tmp/code
   touch /tmp/code/Gemfile
 
   bundle_clean
 
-  restore "nos_run_subprocess"
+  restore "nos_run_process"
 
   [ "$bundle_ran" = "true" ]
 }

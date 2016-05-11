@@ -49,7 +49,7 @@ bundle_install() {
   if [[ -f $(nos_code_dir)/Gemfile ]]; then
 
     cd $(nos_code_dir)
-    nos_run_subprocess "running bundle install" \
+    nos_run_process "Running bundle install" \
       "bundle install --path vendor/bundle"
     cd -
   fi
@@ -60,7 +60,7 @@ bundle_clean() {
   if [[ -f $(nos_code_dir)/Gemfile ]]; then
 
     cd $(nos_code_dir)
-    nos_run_subprocess "cleaning bundle" "bundle clean"
+    nos_run_process "Cleaning bundle" "bundle clean"
     cd -
   fi
 }
