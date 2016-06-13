@@ -1,6 +1,9 @@
 # -*- mode: bash; tab-width: 2; -*-
 # vim: ts=2 sw=2 ft=bash noet
 
+# source nodejs
+. ${engine_lib_dir}/nodejs.sh
+
 # Copy the code into the live directory which will be used to run the app
 publish_release() {
   nos_print_bullet "Moving build into live code directory..."
@@ -32,9 +35,35 @@ gemfile_runtime() {
   echo "false"
 }
 
-# Install the ruby runtime.
-install_runtime() {
-  nos_install "$(runtime)" "$(condensed_runtime)-bundler"
+# Install the ruby runtime along with any dependencies.
+install_runtime_packages() {
+  pkgs=("$(runtime)" "$(condensed_runtime)-bundler")
+
+  # if nodejs is required, let's install it
+  if [[ "$(is_nodejs_required)" = "true" ]]; then
+    pkgs+=("$(nodejs_dependencies)")
+  fi
+
+  # add any client dependencies
+  pkgs+=("$(query_dependencies)")
+
+  nos_install ${pkgs[@]}
+}
+
+# Uninstall build dependencies
+uninstall_build_packages() {
+  # currently ruby doesn't install any build-only deps... I think
+  pkgs=()
+
+  # if nodejs is required, let's fetch any node build deps
+  if [[ "$(is_nodejs_required)" = "true" ]]; then
+    pkgs+=("$(nodejs_build_dependencies)")
+  fi
+
+  # if pkgs isn't empty, let's uninstall what we don't need
+  if [[ ${#pkgs[@]} -gt 0 ]]; then
+    nos_uninstall ${pkgs[@]}
+  fi
 }
 
 # The bundler package will look something like ruby22-bundler so
@@ -57,7 +86,7 @@ bundle_install() {
     cd $(nos_code_dir)
     nos_run_process "Running bundle install" \
       "bundle install"
-    cd -
+    cd - >/dev/null
   fi
 }
 
@@ -67,14 +96,8 @@ bundle_clean() {
 
     cd $(nos_code_dir)
     nos_run_process "Cleaning bundle" "bundle clean"
-    cd -
+    cd - >/dev/null
   fi
-}
-
-# installs dev packages for dependencies of this app
-install_dependencies() {
-  deps=("$(query_dependencies)")
-  nos_install $deps
 }
 
 # compiles a list of dependencies that will need to be installed

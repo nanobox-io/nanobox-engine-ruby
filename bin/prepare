@@ -12,12 +12,19 @@ nos_init "$@"
 . ${engine_lib_dir}/ruby.sh
 
 # install ruby, jruby, or rubinius interpreters and bundler
-install_runtime
-
-# install dependencies for services so native extensions can be compiled
-install_dependencies
+install_runtime_packages
 
 # set bundle config
 set_bundle_config
+
+# if nodejs is required, we have a bit more setup to do
+if [[ "$(is_nodejs_required)" = "true" ]]; then
+
+  # add node_modules/.bin to the PATH
+  persist_npm_bin_to_path
+
+  # set the node.js runtime in cache
+  nodejs_persist_runtime
+fi
 
 exit 0
