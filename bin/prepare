@@ -17,4 +17,7 @@ install_runtime
 # install dependencies for services so native extensions can be compiled
 install_dependencies
 
+# set bundle config
+set_bundle_config
+
 exit 0

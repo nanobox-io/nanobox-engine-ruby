@@ -44,13 +44,19 @@ condensed_runtime() {
   echo "${version//[.-]/}"
 }
 
+# set the bundle config to ensure gems are installed into vendor
+set_bundle_config() {
+  mkdir -p "$(nos_code_dir)/.bundle"
+  nos_template_file "bundle/config" "$(nos_code_dir)/.bundle/config"
+}
+
 # Install dependencies from Gemfile
 bundle_install() {
   if [[ -f $(nos_code_dir)/Gemfile ]]; then
 
     cd $(nos_code_dir)
     nos_run_process "Running bundle install" \
-      "bundle install --path vendor/bundle"
+      "bundle install"
     cd -
   fi
 }
