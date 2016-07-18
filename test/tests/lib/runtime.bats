@@ -52,7 +52,7 @@ setup() {
 
     nos_init "$(cat <<-END
 {
-  "boxfile": {
+  "config": {
     "runtime": "boxfile-runtime"
   }
 }
