@@ -32,7 +32,7 @@ code.build:
 
 ##### Quick Links
 [Ruby Settings](#ruby-settings)  
-[Node.js Settings](#node-js-settings)   
+[Node.js Settings](#nodejs-settings)   
 
 ---
 
