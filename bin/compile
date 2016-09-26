@@ -2,31 +2,5 @@
 # -*- mode: bash; tab-width: 2; -*-
 # vim: ts=2 sw=2 ft=bash noet
 
-# source the Nos framework
-. /opt/nanobox/nos/common.sh
-
-# initialize Nos with the original arguments
-nos_init "$@"
-
-# source common lib
-. ${engine_lib_dir}/ruby.sh
-
-# Run the bundle install
-bundle_install
-
-# Clean old things out of the bundle
-bundle_clean
-
-# if nodejs is required, we have a bit more compiling to do
-if [[ "$(is_nodejs_required)" = "true" ]]; then
-  # run npm rebuild only if the runtime has changed
-  npm_rebuild
-
-  # run npm install
-  npm_install
-
-  # run npm prune
-  npm_prune
-fi
-
+# nothing to do right now
 exit 0

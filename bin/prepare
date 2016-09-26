@@ -14,17 +14,22 @@ nos_init "$@"
 # install ruby, jruby, or rubinius interpreters and bundler
 install_runtime_packages
 
-# set bundle config
-set_bundle_config
+# Run the bundle install
+bundle_install
 
-# if nodejs is required, we have a bit more setup to do
+# Clean old things out of the bundle
+bundle_clean
+
+# if nodejs is required, we have a bit more compiling to do
 if [[ "$(is_nodejs_required)" = "true" ]]; then
+  # run npm rebuild only if the runtime has changed
+  npm_rebuild
 
-  # add node_modules/.bin to the PATH
-  persist_npm_bin_to_path
+  # run npm install
+  npm_install
 
-  # set the node.js runtime in cache
-  nodejs_persist_runtime
+  # run npm prune
+  npm_prune
 fi
 
 exit 0
