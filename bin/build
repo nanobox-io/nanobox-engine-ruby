@@ -11,6 +11,8 @@ nos_init "$@"
 # source common lib
 . ${engine_lib_dir}/ruby.sh
 
+# /data/lib/ruby/gems
+
 # install ruby, jruby, or rubinius interpreters and bundler
 install_runtime_packages
 
