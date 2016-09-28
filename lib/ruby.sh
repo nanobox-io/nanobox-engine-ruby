@@ -119,3 +119,15 @@ query_dependencies() {
 
   echo "${deps[@]}"
 }
+
+copy_cached_files() {
+  if [ -d $(nos_cache_dir)/gems ]; then
+    rsync -a $(nos_cache_dir)/gems/ $(nos_data_dir)/lib/ruby/gems
+  fi
+}
+
+save_cached_files() {
+  if [ -d $(nos_data_dir)/lib/ruby/gems ]; then
+    rsync -a --delete $(nos_data_dir)/lib/ruby/gems/ $(nos_cache_dir)/gems
+  fi
+}
