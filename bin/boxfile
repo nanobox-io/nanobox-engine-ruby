@@ -7,7 +7,6 @@ code.build:
   lib_dirs:
     - vendor/bundle
     - .bundle
-    - node_modules
 END
 
 exit 0
