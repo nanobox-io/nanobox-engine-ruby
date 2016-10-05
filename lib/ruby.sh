@@ -3,7 +3,7 @@
 
 # Copy the code into the live directory which will be used to run the app
 publish_release() {
-  nos_print_bullet "Moving build into live code directory..."
+  nos_print_bullet "Moving build into live app directory..."
   rsync -a $(nos_code_dir)/ $(nos_app_dir)
 }
 
@@ -92,15 +92,15 @@ query_dependencies() {
   deps=()
 
   # mysql
-  if [[ `cat $(nos_code_dir)/Gemfile | grep 'mysql'` ]]; then
+  if [[ `grep 'mysql' $(nos_code_dir)/Gemfile` ]]; then
     deps+=(mysql-client)
   fi
   # memcache
-  if [[ `cat $(nos_code_dir)/Gemfile | grep 'memcache'` ]]; then
+  if [[ `grep 'memcache' $(nos_code_dir)/Gemfile` ]]; then
     deps+=(libmemcached)
   fi
   # postgres
-  if [[ `cat $(nos_code_dir)/Gemfile | grep 'pg'` ]]; then
+  if [[ `grep 'pg' $(nos_code_dir)/Gemfile` ]]; then
     deps+=(postgresql94-client)
   fi
 
