@@ -1,5 +1,2 @@
-build:
+code.build:
   engine: nanobox-io/nanobox-engine-ruby
-
-web1:
-  stability: beta

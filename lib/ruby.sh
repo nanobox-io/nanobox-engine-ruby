@@ -103,6 +103,10 @@ query_dependencies() {
   if [[ `grep 'pg' $(nos_code_dir)/Gemfile` ]]; then
     deps+=(postgresql94-client)
   fi
+  # redis
+  if [[ `grep 'redi' $(nos_code_dir)/Gemfile` ]]; then
+    deps+=(redis)
+  fi
 
   echo "${deps[@]}"
 }
