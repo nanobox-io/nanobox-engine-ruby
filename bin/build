@@ -23,7 +23,4 @@ bundle_install
 # Clean old things out of the bundle
 bundle_clean
 
-# Add vendor/bundle/.bin to the PATH
-persist_bundle_bin_to_path
-
 exit 0
