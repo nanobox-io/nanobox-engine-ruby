@@ -12,11 +12,11 @@ nos_init "$@"
 . ${engine_lib_dir}/ruby.sh
 
 cat <<-END
-run.config:
-  cache_dirs:
+code.build:
+  lib_dirs:
     - vendor/bundle
     - .bundle
-  extra_path_dirs:
+  paths:
     - $(nos_code_dir)/vendor/bundle/.bin
 END
 
