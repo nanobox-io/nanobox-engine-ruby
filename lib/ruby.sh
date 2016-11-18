@@ -110,20 +110,3 @@ query_dependencies() {
 
   echo "${deps[@]}"
 }
-
-# Generate the payload to render the npm profile template
-bundle_profile_payload() {
-  cat <<-END
-{
-  "code_dir": "$(nos_code_dir)"
-}
-END
-}
-
-# ensure node_modules/.bin is persisted to the PATH
-persist_bundle_bin_to_path() {
-  nos_template \
-    "profile.d/bundle.sh" \
-    "$(nos_etc_dir)/profile.d/bundle.sh" \
-    "$(bundle_profile_payload)"
-}

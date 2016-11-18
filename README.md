@@ -6,7 +6,7 @@ This is a Ruby engine used to launch Ruby apps on [Nanobox](http://nanobox.io). 
 To use the Ruby engine, specify `ruby` as your engine in your [boxfile.yml](http://docs.nanobox.io/app-config/boxfile/).
 
 ```yaml
-code.build:
+run.config:
   engine: ruby
 ```
 
@@ -21,9 +21,9 @@ This engine exposes configuration options through the [boxfile.yml](http://docs.
 
 #### Overview of Basic Boxfile Configuration Options
 ```yaml
-code.build:
+run.config:
   engine: ruby
-  config:
+  engine.config:
     # Ruby Settings
     ruby_runtime: ruby-2.2
     # Node.js Settings
@@ -54,8 +54,8 @@ Specifies which Ruby runtime and version to use. The following runtimes are avai
 - jruby-9.0
 
 ```yaml
-code.build:
-  config:
+run.config:
+  engine.config:
     runtime: 'ruby-2.3'
 ```
 
@@ -70,8 +70,8 @@ Many Ruby applications utilize Node.js tools for things such as dependency manag
 Specifies which Node.js runtime and version to use. The available options can be found in the [Node.js engine](https://github.com/nanobox-io/nanobox-engine-nodejs#runtime).
 
 ```yaml
-code.build:
-  config:
+run.config:
+  engine.config:
     nodejs_runtime: nodejs-6.2
 ```
 
