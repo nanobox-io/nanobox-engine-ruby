@@ -24,20 +24,8 @@ This engine exposes configuration options through the [boxfile.yml](http://docs.
 run.config:
   engine: ruby
   engine.config:
-    # Ruby Settings
-    ruby_runtime: ruby-2.2
-    # Node.js Settings
-    nodejs_runtime: nodejs-6.2
+    runtime: ruby-2.2
 ```
-
-##### Quick Links
-[Ruby Settings](#ruby-settings)  
-[Node.js Settings](#nodejs-settings)   
-
----
-
-### Ruby Settings
-The following setting allows you to define your Ruby runtime environment.
 
 ---
 
@@ -61,24 +49,8 @@ run.config:
 
 ---
 
-### Node.js Settings
-Many Ruby applications utilize Node.js tools for things such as dependency management or static asset compilation. This engine allows you to specify which Node.js runtime you'd like to include in your environment.
-
----
-
-#### nodejs_runtime:
-Specifies which Node.js runtime and version to use. The available options can be found in the [Node.js engine](https://github.com/nanobox-io/nanobox-engine-nodejs#runtime).
-
-```yaml
-run.config:
-  engine.config:
-    nodejs_runtime: nodejs-6.2
-```
-
----
-
 ## Ruby on Nanobox
 For more information about using Ruby on Nanobox, view the [Ruby guides](http://guides.nanobox.io/ruby/).
 
 ## Help & Support
-This is an engine provided by [Nanobox](http://nanobox.io). If you need help with this engine, you can reach out to us in the [#nanobox IRC channel](http://webchat.freenode.net/?channels=nanobox). If you are running into an issue with the engine, feel free to [create a new issue on this project](https://github.com/nanobox-io/nanobox-engine-ruby/issues/new).
+This is an engine provided by [Nanobox](http://nanobox.io). If you are running into an issue with the engine, feel free to [create a new issue on this project](https://github.com/nanobox-io/nanobox-engine-ruby/issues/new).
