@@ -107,6 +107,10 @@ query_dependencies() {
   if [[ `grep 'redi' $(nos_code_dir)/Gemfile` ]]; then
     deps+=(redis)
   fi
+  # libxml-ruby
+  if [[ `grep 'libxml-ruby' $(nos_code_dir)/Gemfile` ]]; then
+    deps+=(libxml2)
+  fi
 
   echo "${deps[@]}"
 }
