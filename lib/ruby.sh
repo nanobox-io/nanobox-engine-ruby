@@ -82,7 +82,7 @@ bundle_clean() {
   if [[ -f $(nos_code_dir)/Gemfile ]]; then
 
     cd $(nos_code_dir)
-    nos_run_process "Cleaning bundle" "bundle clean"
+    nos_run_process "Cleaning bundle" "bundle clean --force"
     cd - >/dev/null
   fi
 }
