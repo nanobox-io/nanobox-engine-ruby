@@ -113,7 +113,7 @@ query_dependencies() {
   fi
   # cld3
   if [[ `grep 'cld3' $(nos_code_dir)/Gemfile` ]]; then
-    deps+=(binutils pkg-config protobuf)
+    deps+=(pkg-config protobuf zlib)
   fi
 
   echo "${deps[@]}"
