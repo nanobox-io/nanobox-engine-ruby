@@ -111,6 +111,10 @@ query_dependencies() {
   if [[ `grep 'libxml-ruby' $(nos_code_dir)/Gemfile` ]]; then
     deps+=(libxml2)
   fi
+  # cld3
+  if [[ `grep 'cld3' $(nos_code_dir)/Gemfile` ]]; then
+    deps+=(pkg-config protobuf zlib)
+  fi
 
   echo "${deps[@]}"
 }
