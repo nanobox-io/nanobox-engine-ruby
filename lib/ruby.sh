@@ -115,6 +115,14 @@ query_dependencies() {
   if [[ `grep 'cld3' $(nos_code_dir)/Gemfile` ]]; then
     deps+=(pkg-config protobuf zlib)
   fi
+  # rmagick
+  if [[ `grep 'rmagick' $(nos_code_dir)/Gemfile` ]]; then
+    deps+=(ImageMagick6)
+    `ln -s /data/bin/Magick-config6 /data/bin/Magick-config`
+    `ln -s /data/bin/Magick++-config6 /data/bin/Magick++-config`
+    `ln -s /data/bin/MagickCore-config6 /data/bin/MagickCore-config`
+    `ln -s /data/bin/MagickWand-config6 /data/bin/MagickWand-config`
+  fi
 
   echo "${deps[@]}"
 }
