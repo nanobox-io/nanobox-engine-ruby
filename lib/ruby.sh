@@ -124,7 +124,7 @@ query_dependencies() {
     `ln -s /data/bin/MagickWand-config6 /data/bin/MagickWand-config`
   fi
   # nokogiri
-  if [[ `grep 'cld3' $(nos_code_dir)/Gemfile` ]]; then
+  if [[ `grep 'nokogiri' $(nos_code_dir)/Gemfile` ]]; then
     deps+=(libxml2 libxslt)
   fi
 
