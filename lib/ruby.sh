@@ -125,7 +125,7 @@ query_dependencies() {
   fi
   # nokogiri
   if [[ `grep 'nokogiri' $(nos_code_dir)/Gemfile` ]]; then
-    deps+=(pkgconf libxml2 libxslt)
+    deps+=(pkgconf libxml2 libxslt zlib)
   fi
 
   echo "${deps[@]}"
