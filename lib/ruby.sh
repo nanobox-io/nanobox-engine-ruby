@@ -117,7 +117,7 @@ query_dependencies() {
   fi
   # cld3
   if [[ `grep 'cld3' $(nos_code_dir)/Gemfile` ]]; then
-    deps+=(pkg-config protobuf zlib)
+    deps+=(pkgconf protobuf zlib)
   fi
   # rmagick
   if [[ `grep 'rmagick' $(nos_code_dir)/Gemfile` ]]; then
@@ -126,6 +126,10 @@ query_dependencies() {
     `ln -s /data/bin/Magick++-config6 /data/bin/Magick++-config`
     `ln -s /data/bin/MagickCore-config6 /data/bin/MagickCore-config`
     `ln -s /data/bin/MagickWand-config6 /data/bin/MagickWand-config`
+  fi
+  # nokogiri
+  if [[ `grep 'nokogiri' $(nos_code_dir)/Gemfile` ]]; then
+    deps+=(pkgconf libxml2 libxslt zlib)
   fi
 
   echo "${deps[@]}"
