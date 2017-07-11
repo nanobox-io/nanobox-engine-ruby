@@ -113,7 +113,7 @@ query_dependencies() {
   fi
   # cld3
   if [[ `grep 'cld3' $(nos_code_dir)/Gemfile` ]]; then
-    deps+=(pkg-config protobuf zlib)
+    deps+=(pkgconf protobuf zlib)
   fi
   # rmagick
   if [[ `grep 'rmagick' $(nos_code_dir)/Gemfile` ]]; then
@@ -125,7 +125,7 @@ query_dependencies() {
   fi
   # nokogiri
   if [[ `grep 'nokogiri' $(nos_code_dir)/Gemfile` ]]; then
-    deps+=(pkg-config libxml2 libxslt)
+    deps+=(pkgconf libxml2 libxslt)
   fi
 
   echo "${deps[@]}"
