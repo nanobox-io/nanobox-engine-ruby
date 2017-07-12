@@ -11,9 +11,11 @@ publish_release() {
 # within the Boxfile, then will rely on default_runtime to
 # provide a sensible default
 runtime() {
-  echo $(nos_validate \
+  version=$(nos_validate \
     "$(nos_payload "config_runtime")" \
     "string" "$(default_runtime)")
+
+  echo $(expr "${version}" : '\([a-z]*-[0-9]*\.[0-9]*\)')
 }
 
 # Provide a default ruby version.

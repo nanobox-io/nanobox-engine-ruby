@@ -12,6 +12,7 @@ engine_dir="$(dirname ${test_dir})"
 docker run \
   -it \
   -u=gonano \
+  --name=ruby_sandbox \
   --privileged=true \
   --workdir=/test \
   -e "PATH=$(path)" \
@@ -19,3 +20,5 @@ docker run \
   --volume=${engine_dir}/:/engine \
   nanobox/build \
   /bin/bash
+
+docker rm ruby_sandbox
