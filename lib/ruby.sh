@@ -92,40 +92,40 @@ query_dependencies() {
   deps=()
 
   # mysql
-  if [[ `grep 'mysql' $(nos_code_dir)/Gemfile` ]]; then
+  if [[ `grep 'mysql' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
     deps+=(mysql-client)
   fi
   # memcache
-  if [[ `grep 'memcache' $(nos_code_dir)/Gemfile` ]]; then
+  if [[ `grep 'memcache' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
     deps+=(libmemcached)
   fi
   # postgres
-  if [[ `grep 'pg' $(nos_code_dir)/Gemfile` ]]; then
+  if [[ `grep 'pg' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
     deps+=(postgresql94-client)
   fi
   # redis
-  if [[ `grep 'redi' $(nos_code_dir)/Gemfile` ]]; then
+  if [[ `grep 'redi' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
     deps+=(redis)
   fi
   # libxml-ruby
-  if [[ `grep 'libxml-ruby' $(nos_code_dir)/Gemfile` ]]; then
+  if [[ `grep 'libxml-ruby' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
     deps+=(libxml2)
   fi
   # libcurl
-  if [[ `grep 'typhoeus' $(nos_code_dir)/Gemfile` ]]; then
+  if [[ `grep 'typhoeus' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
     deps+=(curl)
   fi
   # cld3
-  if [[ `grep 'cld3' $(nos_code_dir)/Gemfile` ]]; then
+  if [[ `grep 'cld3' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
     deps+=(pkgconf protobuf zlib)
   fi
   # rmagick
-  if [[ `grep 'rmagick' $(nos_code_dir)/Gemfile` ]]; then
+  if [[ `grep 'rmagick' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
     deps+=(ImageMagick6)
     `for i in Magick++-config Magick-config MagickCore-config MagickWand-config Wand-config animate compare composite conjure convert display identify import mogrify montage stream; do ln -sf /data/bin/${i}6 /data/bin/${i}; done`
   fi
   # nokogiri
-  if [[ `grep 'nokogiri' $(nos_code_dir)/Gemfile` ]]; then
+  if [[ `grep 'nokogiri' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
     deps+=(pkgconf libxml2 libxslt zlib)
   fi
 

@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    pg (0.21.0)
     puma (2.14.0)
     puma (2.14.0-java)
     rack (1.6.4)
