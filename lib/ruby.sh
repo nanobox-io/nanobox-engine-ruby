@@ -15,7 +15,7 @@ runtime() {
     "$(nos_payload "config_runtime")" \
     "string" "$(default_runtime)")
 
-  echo $(expr "${version}" : '\([a-z]*-[0-9]*\.[0-9]*\)')
+  echo $(expr "${version}" : '\([a-z\-]*-*[0-9]*\.*[0-9]*\)')
 }
 
 # Provide a default ruby version.
