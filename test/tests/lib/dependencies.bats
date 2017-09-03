@@ -69,7 +69,7 @@ END
 
   deps="$(query_dependencies)"
 
-  [ "$deps" = "postgresql94-client" ]
+  [ "$deps" = "postgresql96-client" ]
 }
 
 @test "detects multiple dependencies" {
@@ -85,5 +85,5 @@ END
 
   deps="$(query_dependencies)"
 
-  [ "$deps" = "mysql-client libmemcached postgresql94-client" ]
+  [ "$deps" = "mysql-client libmemcached postgresql96-client" ]
 }

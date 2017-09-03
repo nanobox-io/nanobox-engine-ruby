@@ -101,7 +101,7 @@ query_dependencies() {
   fi
   # postgres
   if [[ `grep 'pg' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
-    deps+=(postgresql94-client)
+    deps+=(postgresql96-client)
   fi
   # redis
   if [[ `grep 'redi' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
