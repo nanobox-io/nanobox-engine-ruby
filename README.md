@@ -25,7 +25,7 @@ run.config:
   engine: ruby
   engine.config:
     runtime: ruby-2.2
-    postgres_client_version: 9.6
+    postgresql_client_version: 9.6
 ```
 
 ---
@@ -51,7 +51,7 @@ run.config:
 
 ---
 
-#### postgres_client_version
+#### postgresql_client_version
 If you're the 'pg' gem is detected, specify which version of the postgres client to use.
 
 NOTE: The engine will try to detect the correct version first.
@@ -59,7 +59,7 @@ NOTE: The engine will try to detect the correct version first.
 ```yaml
 run.config:
   engine.config:
-    postgres_client_version: 9.6
+    postgresql_client_version: 9.6
 ```
 
 ---
