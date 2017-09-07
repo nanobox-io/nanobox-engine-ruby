@@ -33,7 +33,7 @@ postgresql_version() {
     "$(nos_payload "postgresql_client_version")" \
     "string" "$(default_postgresql_version)")
   
-  version=$(expr "${version}" : '\([a-z]*-[0-9]*\.[0-9]*\)')  
+  version=$(expr "${version}" : '\([0-9]*\.[0-9]*\)')  
   # we only need the condensed version
   echo "${version//[.-]/}"
 }
