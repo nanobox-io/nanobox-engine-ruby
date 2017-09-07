@@ -28,19 +28,20 @@ default_runtime() {
 }
 
 # postgres client version
-postgres_version() {
+postgresql_version() {
   version=$(nos_validate \
-    "$(nos_payload "postgres_client_version")" \
-    "string" "$(default_postgres_version)")
-    
+    "$(nos_payload "postgresql_client_version")" \
+    "string" "$(default_postgresql_version)")
+  
+  version=$(expr "${version}" : '\([a-z]*-[0-9]*\.[0-9]*\)')  
   # we only need the condensed version
   echo "${version//[.-]/}"
 }
 
 # detect the version from the boxfile, or fall back to a sensible default
-default_postgres_version() {
+default_postgresql_version() {
   # try to detect the version if specified in the boxfile
-  detected=$(detect_postgres_version)
+  detected=$(detect_postgresql_version)
   
   if [[ "$detected" = "" ]]; then
     # the default, fallback
@@ -51,10 +52,11 @@ default_postgres_version() {
 }
 
 # try to determine the version automatically
-detect_postgres_version() {
+detect_postgresql_version() {
   cat $(nos_code_dir)/boxfile.yml \
     | grep "nanobox/postgresql" \
-      | awk -F ":" '{print $3}'
+      | awk -F ":" '{print $3}' \
+        | head -n 1
 }
 
 # todo: extract the contents of Gemfile
@@ -131,7 +133,7 @@ query_dependencies() {
   fi
   # postgres
   if [[ `grep 'pg' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
-    deps+=(postgresql$(postgres_version)-client)
+    deps+=(postgresql$(postgresql_version)-client)
   fi
   # redis
   if [[ `grep 'redi' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
