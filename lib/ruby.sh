@@ -27,6 +27,36 @@ default_runtime() {
   fi
 }
 
+# postgres client version
+postgres_version() {
+  version=$(nos_validate \
+    "$(nos_payload "postgres_client_version")" \
+    "string" "$(default_postgres_version)")
+    
+  # we only need the condensed version
+  echo "${version//[.-]/}"
+}
+
+# detect the version from the boxfile, or fall back to a sensible default
+default_postgres_version() {
+  # try to detect the version if specified in the boxfile
+  detected=$(detect_postgres_version)
+  
+  if [[ "$detected" = "" ]]; then
+    # the default, fallback
+    echo "9.4"
+  else
+    echo $detected
+  fi
+}
+
+# try to determine the version automatically
+detect_postgres_version() {
+  cat $(nos_code_dir)/boxfile.yml \
+    | grep "nanobox/postgresql" \
+      | awk -F ":" '{print $3}'
+}
+
 # todo: extract the contents of Gemfile
 gemfile_runtime() {
   echo "false"
@@ -101,7 +131,7 @@ query_dependencies() {
   fi
   # postgres
   if [[ `grep 'pg' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
-    deps+=(postgresql96-client)
+    deps+=(postgresql$(postgres_version)-client)
   fi
   # redis
   if [[ `grep 'redi' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then

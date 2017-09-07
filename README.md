@@ -25,6 +25,7 @@ run.config:
   engine: ruby
   engine.config:
     runtime: ruby-2.2
+    postgres_client_version: 9.6
 ```
 
 ---
@@ -46,6 +47,19 @@ Specifies which Ruby runtime and version to use. The following runtimes are avai
 run.config:
   engine.config:
     runtime: 'ruby-2.3'
+```
+
+---
+
+#### postgres_client_version
+If you're the 'pg' gem is detected, specify which version of the postgres client to use.
+
+NOTE: The engine will try to detect the correct version first.
+
+```yaml
+run.config:
+  engine.config:
+    postgres_client_version: 9.6
 ```
 
 ---
