@@ -44,7 +44,7 @@ default_postgres_version() {
   
   if [[ "$detected" = "" ]]; then
     # the default, fallback
-    echo "9.4"
+    echo "9.6"
   else
     echo $detected
   fi
