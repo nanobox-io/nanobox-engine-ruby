@@ -64,9 +64,7 @@ docker run \
 # test the exit code
 if [[ "${PIPESTATUS[0]}" != "0" ]]; then
   echo "   [!] FAILED"
-  docker rm ruby_test
   exit 1
 else
   echo "   [√] SUCCESS"
-  docker rm ruby_test
 fi
