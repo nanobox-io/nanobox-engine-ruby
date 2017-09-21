@@ -53,6 +53,7 @@ docker run \
   -e "PATH=$(path)" \
   --volume=${test_dir}/:/test \
   --volume=${engine_dir}/:/engine \
+  --volume=/tmp/pkgsrc:/data/var/db/pkgin/cache \
   --rm \
   nanobox/build \
   /test/util/bats/bin/bats \

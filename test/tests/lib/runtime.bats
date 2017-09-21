@@ -97,3 +97,13 @@ END
 
   [ "$condensed" = "ruby22" ]
 }
+
+@test "generates a valid condensed runtime with patch" {
+  stub_and_echo "runtime" "ruby-2.4.2"
+
+  condensed=$(condensed_runtime)
+
+  restore "runtime"
+
+  [ "$condensed" = "ruby24" ]
+}
