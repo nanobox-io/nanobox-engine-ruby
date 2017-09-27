@@ -154,7 +154,21 @@ query_dependencies() {
   # rmagick
   if [[ `grep 'rmagick' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
     deps+=(ImageMagick6)
-    `for i in Magick++-config Magick-config MagickCore-config MagickWand-config Wand-config animate compare composite conjure convert display identify import mogrify montage stream; do ln -sf /data/bin/${i}6 /data/bin/${i}; done`
+    `for i in Magick++-config \
+              Magick-config \
+              MagickCore-config \
+              MagickWand-config \
+              Wand-config animate \
+              compare \
+              composite \
+              conjure \
+              convert \
+              display \
+              identify \
+              import \
+              mogrify \
+              montage \
+              stream; do ln -sf /data/bin/${i}6 /data/bin/${i}; done`
   fi
   # nokogiri
   if [[ `grep 'nokogiri' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
