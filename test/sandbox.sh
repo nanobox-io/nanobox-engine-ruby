@@ -12,11 +12,15 @@ engine_dir="$(dirname ${test_dir})"
 docker run \
   -it \
   -u=gonano \
+  --name=ruby_sandbox \
   --privileged=true \
   --workdir=/test \
   -e "PATH=$(path)" \
   --volume=${test_dir}/:/test \
   --volume=${engine_dir}/:/engine \
+  --volume=/tmp/pkgsrc:/data/var/db/pkgin/cache \
   --rm \
   nanobox/build \
   /bin/bash
+
+docker rm ruby_sandbox

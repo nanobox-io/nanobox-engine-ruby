@@ -11,9 +11,11 @@ publish_release() {
 # within the Boxfile, then will rely on default_runtime to
 # provide a sensible default
 runtime() {
-  echo $(nos_validate \
+  version=$(nos_validate \
     "$(nos_payload "config_runtime")" \
     "string" "$(default_runtime)")
+
+  echo $version
 }
 
 # Provide a default ruby version.
@@ -56,7 +58,7 @@ uninstall_build_packages() {
 # The bundler package will look something like ruby22-bundler so
 # we need to fetch the condensed runtime to use for the package
 condensed_runtime() {
-  version=$(runtime)
+  version=$(expr "$(runtime)" : '\([a-z\-]*-*[0-9]*\.*[0-9]*\)')
   echo "${version//[.-]/}"
 }
 
