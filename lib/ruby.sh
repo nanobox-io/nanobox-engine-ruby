@@ -121,6 +121,10 @@ query_dependencies() {
   if [[ `grep 'cld3' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
     deps+=(pkgconf protobuf zlib)
   fi
+  # image_science
+  if [[ `grep 'image_science' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
+    deps+=(freeimage)
+  fi
   # rmagick
   if [[ `grep 'rmagick' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
     deps+=(ImageMagick6)
