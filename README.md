@@ -56,6 +56,12 @@ If you're the 'pg' gem is detected, specify which version of the postgres client
 
 NOTE: The engine will try to detect the correct version first.
 
+- 9.3
+- 9.4
+- 9.5
+- 9.6
+- 10
+
 ```yaml
 run.config:
   engine.config:
