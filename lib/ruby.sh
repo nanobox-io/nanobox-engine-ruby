@@ -30,7 +30,7 @@ default_runtime() {
 # postgres client version
 postgresql_version() {
   version=$(nos_validate \
-    "$(nos_payload "postgresql_client_version")" \
+    "$(nos_payload "config_postgresql_client_version")" \
     "string" "$(default_postgresql_version)")
   
   version=$(expr "${version}" : '\([0-9]*\.[0-9]*\)')  
