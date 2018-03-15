@@ -29,6 +29,38 @@ default_runtime() {
   fi
 }
 
+# postgres client version
+postgresql_version() {
+  version=$(nos_validate \
+    "$(nos_payload "config_postgresql_client_version")" \
+    "string" "$(default_postgresql_version)")
+  
+  version=$(expr "${version}" : '\([0-9]*\.[0-9]*\)')  
+  # we only need the condensed version
+  echo "${version//[.-]/}"
+}
+
+# detect the version from the boxfile, or fall back to a sensible default
+default_postgresql_version() {
+  # try to detect the version if specified in the boxfile
+  detected=$(detect_postgresql_version)
+  
+  if [[ "$detected" = "" ]]; then
+    # the default, fallback
+    echo "9.6"
+  else
+    echo $detected
+  fi
+}
+
+# try to determine the version automatically
+detect_postgresql_version() {
+  cat $(nos_code_dir)/boxfile.yml \
+    | grep "nanobox/postgresql" \
+      | awk -F ":" '{print $3}' \
+        | head -n 1
+}
+
 # todo: extract the contents of Gemfile
 gemfile_runtime() {
   echo "false"
@@ -103,7 +135,7 @@ query_dependencies() {
   fi
   # postgres
   if [[ `grep 'pg' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
-    deps+=(postgresql96-client)
+    deps+=(postgresql$(postgresql_version)-client)
   fi
   # redis
   if [[ `grep 'redi' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
@@ -128,7 +160,21 @@ query_dependencies() {
   # rmagick
   if [[ `grep 'rmagick' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
     deps+=(ImageMagick6)
-    `for i in Magick++-config Magick-config MagickCore-config MagickWand-config Wand-config animate compare composite conjure convert display identify import mogrify montage stream; do ln -sf /data/bin/${i}6 /data/bin/${i}; done`
+    `for i in Magick++-config \
+              Magick-config \
+              MagickCore-config \
+              MagickWand-config \
+              Wand-config animate \
+              compare \
+              composite \
+              conjure \
+              convert \
+              display \
+              identify \
+              import \
+              mogrify \
+              montage \
+              stream; do ln -sf /data/bin/${i}6 /data/bin/${i}; done`
   fi
   # nokogiri
   if [[ `grep 'nokogiri' $(nos_code_dir)/Gemfile $(nos_code_dir)/Gemfile.lock` ]]; then
