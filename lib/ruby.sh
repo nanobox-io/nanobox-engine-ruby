@@ -23,7 +23,7 @@ default_runtime() {
   gem_runtime=$(gemfile_runtime)
 
   if [[ "$gem_runtime" = "false" ]]; then
-    echo "ruby-2.3"
+    echo "ruby-2.5"
   else
     echo $gem_runtime
   fi
@@ -34,8 +34,8 @@ postgresql_version() {
   version=$(nos_validate \
     "$(nos_payload "config_postgresql_client_version")" \
     "string" "$(default_postgresql_version)")
-  
-  version=$(expr "${version}" : '\([0-9]*\.[0-9]*\)')  
+
+  version=$(expr "${version}" : '\([0-9]*\.[0-9]*\)')
   # we only need the condensed version
   echo "${version//[.-]/}"
 }
@@ -44,7 +44,7 @@ postgresql_version() {
 default_postgresql_version() {
   # try to detect the version if specified in the boxfile
   detected=$(detect_postgresql_version)
-  
+
   if [[ "$detected" = "" ]]; then
     # the default, fallback
     echo "9.6"

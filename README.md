@@ -24,7 +24,7 @@ This engine exposes configuration options through the [boxfile.yml](http://docs.
 run.config:
   engine: ruby
   engine.config:
-    runtime: ruby-2.2
+    runtime: ruby-2.5
     postgresql_client_version: 9.6
 ```
 
@@ -37,8 +37,9 @@ Specifies which Ruby runtime and version to use. The following runtimes are avai
 - ruby-2.0
 - ruby-2.1
 - ruby-2.2
-- ruby-2.3 *(default)*
+- ruby-2.3
 - ruby-2.4
+- ruby-2.5 *(default)*
 - jruby-1.6
 - jruby-1.7
 - jruby-9.0
@@ -46,7 +47,7 @@ Specifies which Ruby runtime and version to use. The following runtimes are avai
 ```yaml
 run.config:
   engine.config:
-    runtime: 'ruby-2.3'
+    runtime: 'ruby-2.5'
 ```
 
 ---
