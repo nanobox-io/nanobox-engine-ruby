@@ -53,9 +53,9 @@ run.config:
 ---
 
 #### postgresql_client_version
-If the 'pg' gem is not detected, specify which version of the postgres client to use.
+If the 'pg' gem is detected the engine will install the postgresql client. You can specify the version to install using postgresql_client_version in your boxfile.yml.
 
-NOTE: The engine will try to detect the correct version first.
+**NOTE**: The engine will try to detect the correct version first.
 
 - 9.3
 - 9.4
