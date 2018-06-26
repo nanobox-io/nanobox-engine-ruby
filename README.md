@@ -53,7 +53,7 @@ run.config:
 ---
 
 #### postgresql_client_version
-If you're the 'pg' gem is detected, specify which version of the postgres client to use.
+If the 'pg' gem is not detected, specify which version of the postgres client to use.
 
 NOTE: The engine will try to detect the correct version first.
 
