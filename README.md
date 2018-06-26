@@ -39,6 +39,7 @@ Specifies which Ruby runtime and version to use. The following runtimes are avai
 - ruby-2.2
 - ruby-2.3 *(default)*
 - ruby-2.4
+- ruby-2.5
 - jruby-1.6
 - jruby-1.7
 - jruby-9.0
