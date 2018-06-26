@@ -25,7 +25,7 @@ run.config:
   engine: ruby
   engine.config:
     runtime: ruby-2.2
-    postgresql_client_version: 9.6
+    postgresql_client_version: "9.6"
 ```
 
 ---
@@ -65,7 +65,7 @@ NOTE: The engine will try to detect the correct version first.
 ```yaml
 run.config:
   engine.config:
-    postgresql_client_version: 9.6
+    postgresql_client_version: "9.6"
 ```
 
 ---
