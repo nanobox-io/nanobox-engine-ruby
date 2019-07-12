@@ -45,7 +45,7 @@ setup() {
 
   restore "gemfile_runtime"
 
-  [ "$default" = "ruby-2.3" ]
+  [ "$default" = "ruby-2.4" ]
 }
 
 @test "runtime is chosen from the Boxfile if present" {

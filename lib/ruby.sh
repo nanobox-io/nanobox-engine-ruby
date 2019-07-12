@@ -23,7 +23,7 @@ default_runtime() {
   gem_runtime=$(gemfile_runtime)
 
   if [[ "$gem_runtime" = "false" ]]; then
-    echo "ruby-2.3"
+    echo "ruby-2.4"
   else
     echo $gem_runtime
   fi
